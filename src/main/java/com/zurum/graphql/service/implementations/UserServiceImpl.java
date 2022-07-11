@@ -17,6 +17,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Slf4j
 @Service
 @RequiredArgsConstructor
@@ -53,6 +55,15 @@ public class UserServiceImpl implements UserService {
                 .content(ModelMapperUtils.mapAll(users.getContent(), GetUserResponseDto.class))
                 .totalElements(users.getTotalElements())
                 .build();
+    }
+
+    @Override
+    public List<GetUserResponseDto> getAllUserz() {
+        List<User> users = userRepository.findAll();
+        if (users.isEmpty()) {
+            throw new ResourceNotFoundException("No user found");
+        }
+        return ModelMapperUtils.mapAll(users, GetUserResponseDto.class);
     }
 
     @Override
