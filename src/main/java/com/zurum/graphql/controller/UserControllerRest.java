@@ -20,7 +20,7 @@ import java.net.URI;
 @RestController
 @AllArgsConstructor
 @RequestMapping("user")
-public class UserController {
+public class UserControllerRest {
 
     private final UserService userService;
 
