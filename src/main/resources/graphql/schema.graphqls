@@ -1,0 +1,22 @@
+scalar DateTime
+
+type Query {
+    getUsers: [GetUserResponseDto]
+    getUserById(id: ID!): GetUserResponseDto
+}
+
+type UserRegisterRequestDto {
+    firstName:String
+    lastName: String
+    age: Int
+    dob: DateTime
+    phoneNumber: String
+}
+
+type GetUserResponseDto {
+    lastName: String
+    email: String
+    age: Int
+    dob: DateTime
+    phoneNumber: String
+}
